@@ -30,7 +30,7 @@ public class AllListener {
                     if (respawnPosition != null && newServerPlayer.level() instanceof ServerLevel serverLevel) {
                         boolean force = false;
                         if (serverLevel.players().isEmpty() && General.forceJump.get()) {
-                            long newTime = ((serverLevel.getDayTime() / 24000 + 1) * 24000) - 500;
+                            long newTime = ((serverLevel.getDayTime() / 24000 + 1) * 24000) - General.jumpTime.get();
                             serverLevel.setDayTime(Math.max(0,newTime));
                             serverLevel.updateSkyBrightness();
                             force = true;
