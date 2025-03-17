@@ -27,9 +27,7 @@ public class General {
         jumpTime = COMMON_BUILDER.comment("How long till dawn? 0 meanings the start of new day.")
                 .translation(FlyMe2Tomorrow.rl("jump_time").toLanguageKey("config"))
                 .defineInRange("JumpTime", -500,-1000,3000);
-        forceJump = COMMON_BUILDER.comment("Force jump to tomorrow if just single player or even day.")
-                .translation(FlyMe2Tomorrow.rl("force_jump").toLanguageKey("config"))
-                .define("ForceJump", true);
+
 
         COMMON_BUILDER.pop();
 

@@ -14,8 +14,6 @@ public class ClientSetup {
     @SubscribeEvent
     public static void onClientEvent(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            if (!SimpleMixinPlugin.isIrisLikeLoad())
-                FlyMe2Tomorrow.LOGGER.warn("Iris like mod is not installed, the mod would not work without that mod.");
-        });
+              });
     }
 }

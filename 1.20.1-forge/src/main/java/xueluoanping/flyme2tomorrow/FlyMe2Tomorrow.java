@@ -14,14 +14,14 @@ import java.util.Objects;
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(FlyMe2Tomorrow.MOD_ID)
 public class FlyMe2Tomorrow {
-    public static final String MOD_ID = "swaying_garden";
+    public static final String MOD_ID = "flyme2tomorrow";
     // Directly reference a log4j logger.
     public static final Logger LOGGER = LogManager.getLogger();
     public static final boolean useLogger = Objects.equals(System.getProperty("forgegradle.runs.dev"), "true");
 
     @SuppressWarnings("removal")
     public FlyMe2Tomorrow() {
-        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, General.CLIENT_CONFIG);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, General.COMMON_CONFIG);
     }
 
     public static void logger(Object... x) {

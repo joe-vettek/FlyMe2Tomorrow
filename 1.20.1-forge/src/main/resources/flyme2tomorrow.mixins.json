@@ -1,10 +1,9 @@
 {
   "required": true,
   "package": "xueluoanping.flyme2tomorrow.mixin",
-  "refmap": "swayinggarden.refmap.json",
+  "refmap": "flyme2tomorrow.refmap.json",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "MixinWorldRenderingSettings"
   ],
   "client": [
   ],

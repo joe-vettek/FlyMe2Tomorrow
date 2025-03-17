@@ -30,11 +30,14 @@ public class AllListener {
                     && newPlayer instanceof ServerPlayer newServerPlayer) {
                 BlockPos respawnPosition = serverPlayer.getRespawnPosition();
                 try {
+                    if(respawnPosition==null){
+                        respawnPosition=newServerPlayer.level().getSharedSpawnPos();
+                    }
                     if (respawnPosition != null && newServerPlayer.level() instanceof ServerLevel serverLevel) {
                         boolean force = false;
                         if (serverLevel.players().isEmpty() && General.forceJump.get()) {
                             long newTime = ((serverLevel.getDayTime() / 24000 + 1) * 24000) - 500;
-                            serverLevel.setDayTime(newTime);
+                            serverLevel.setDayTime(Math.max(0,newTime));
                             serverLevel.updateSkyBrightness();
                             force = true;
                         }
@@ -60,10 +63,10 @@ public class AllListener {
 
     @SubscribeEvent
     public static void onSleepFinishedTimeEvent(SleepFinishedTimeEvent sleepFinishedTimeEvent) {
-        for (Player player : sleepFinishedTimeEvent.getLevel().players()) {
-            player.getFoodData().setFoodLevel(20);
-            player.heal(player.getMaxHealth());
-        }
+        // for (Player player : sleepFinishedTimeEvent.getLevel().players()) {
+        //     player.getFoodData().setFoodLevel(20);
+        //     player.heal(player.getMaxHealth());
+        // }
     }
 
 }

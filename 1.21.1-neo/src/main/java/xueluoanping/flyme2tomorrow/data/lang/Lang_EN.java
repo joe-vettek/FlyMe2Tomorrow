@@ -16,7 +16,6 @@ public class Lang_EN extends LangHelper {
         add(FlyMe2Tomorrow.rl("to_bed").toLanguageKey("message"), "Somebody help you to bed, you are just tired.");
         add(FlyMe2Tomorrow.rl("force_jump").toLanguageKey("config"), "Force Jump");
         add(FlyMe2Tomorrow.rl("jump_time").toLanguageKey("config"), "Jump Time");
-        add(FlyMe2Tomorrow.rl("sleep_therapy").toLanguageKey("config"), "Sleep Therapy");
 
     }
 }
