@@ -4,6 +4,7 @@
   "refmap": "flyme2tomorrow.refmap.json",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "MixinPeaBulletProcedure"
   ],
   "client": [
   ],
@@ -11,5 +12,6 @@
     "defaultRequire": 1
   },
   "plugin": "xueluoanping.flyme2tomorrow.mixin.SimpleMixinPlugin",
-  "minVersion": "0.8"
+  "minVersion": "0.8",
+  "mixinextras": {"minVersion": "0.5.0-rc.2"}
 }
