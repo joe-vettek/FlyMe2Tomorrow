@@ -36,15 +36,15 @@ public class AllListener {
         if (event.getLevel() instanceof ServerLevel serverLevel) {
             if (event.getEntity() instanceof LivingEntity livingEntity) {
                 if (livingEntity instanceof PathfinderMob pathfinderMob) {
-                    String namespace = BuiltInRegistries.ENTITY_TYPE
-                            .getKey(pathfinderMob.getType())
-                            .getNamespace();
-                    if (namespace.equals("pvz_zengarden") ||
-                            namespace.equals("horrrs_pvz")) {
-                        pathfinderMob.targetSelector.addGoal(
-                                3, new WNearestAttackableTargetGoal<>(pathfinderMob, Enemy.class, true, false)
-                        );
-                    }
+                    // String namespace = BuiltInRegistries.ENTITY_TYPE
+                    //         .getKey(pathfinderMob.getType())
+                    //         .getNamespace();
+                    // if (namespace.equals("pvz_zengarden") ||
+                    //         namespace.equals("horrrs_pvz")) {
+                    //     pathfinderMob.targetSelector.addGoal(
+                    //             3, new WNearestAttackableTargetGoal<>(pathfinderMob, Enemy.class, true, false)
+                    //     );
+                    // }
 
                     if (pathfinderMob instanceof Enemy
                             ||pathfinderMob instanceof Monster) {
