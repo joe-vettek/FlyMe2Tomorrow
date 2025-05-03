@@ -25,8 +25,8 @@ import xueluoanping.flyme2tomorrow.config.General;
 @Mod.EventBusSubscriber(modid = FlyMe2Tomorrow.MOD_ID)
 public class AllListener {
 
-    public final static TagKey<EntityType<?>> PVZ_ZENGARDEN_NO_PET = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("pvz_zengarden", "no_pettable_plant"));
-    public final static TagKey<EntityType<?>> PVZ_ZENGARDEN = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("pvz_zengarden", "faction/plants"));
+    // public final static TagKey<EntityType<?>> PVZ_ZENGARDEN_NO_PET = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("pvz_zengarden", "no_pettable_plant"));
+    // public final static TagKey<EntityType<?>> PVZ_ZENGARDEN = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("pvz_zengarden", "faction/plants"));
 
     public final static TagKey<EntityType<?>> HORRRS_PVZ = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("horrrs_pvz", "plants"));
     public final static TagKey<EntityType<?>> HORRRS_PVZ_GUARD = TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath("horrrs_pvz", "guard"));
@@ -36,27 +36,29 @@ public class AllListener {
         if (event.getLevel() instanceof ServerLevel serverLevel) {
             if (event.getEntity() instanceof LivingEntity livingEntity) {
                 if (livingEntity instanceof PathfinderMob pathfinderMob) {
-                    // String namespace = BuiltInRegistries.ENTITY_TYPE
-                    //         .getKey(pathfinderMob.getType())
-                    //         .getNamespace();
-                    // if (namespace.equals("pvz_zengarden") ||
-                    //         namespace.equals("horrrs_pvz")) {
-                    //     pathfinderMob.targetSelector.addGoal(
-                    //             3, new WNearestAttackableTargetGoal<>(pathfinderMob, Enemy.class, true, false)
-                    //     );
-                    // }
+                    String namespace = BuiltInRegistries.ENTITY_TYPE
+                            .getKey(pathfinderMob.getType())
+                            .getNamespace();
+                    if (
+                            // namespace.equals("pvz_zengarden") ||
+                            namespace.equals("horrrs_pvz")
+                    ) {
+                        pathfinderMob.targetSelector.addGoal(
+                                3, new WNearestAttackableTargetGoal<>(pathfinderMob, Enemy.class, true, true)
+                        );
+                    }
 
                     if (pathfinderMob instanceof Enemy
                             ||pathfinderMob instanceof Monster) {
-                        pathfinderMob.targetSelector.addGoal(
-                                1, new PlantNearestAttackableTargetGoal(pathfinderMob, PVZ_ZENGARDEN_NO_PET, true, false)
-                        );
+                        // pathfinderMob.targetSelector.addGoal(
+                        //         1, new PlantNearestAttackableTargetGoal(pathfinderMob, PVZ_ZENGARDEN_NO_PET, true, false)
+                        // );
                         pathfinderMob.targetSelector.addGoal(
                                 1, new PlantNearestAttackableTargetGoal(pathfinderMob, HORRRS_PVZ_GUARD, true, false)
                         );
-                        pathfinderMob.targetSelector.addGoal(
-                                5, new PlantNearestAttackableTargetGoal(pathfinderMob, PVZ_ZENGARDEN, true, false)
-                        );
+                        // pathfinderMob.targetSelector.addGoal(
+                        //         5, new PlantNearestAttackableTargetGoal(pathfinderMob, PVZ_ZENGARDEN, true, false)
+                        // );
                         pathfinderMob.targetSelector.addGoal(
                                 5, new PlantNearestAttackableTargetGoal(pathfinderMob, HORRRS_PVZ, true, false)
                         );

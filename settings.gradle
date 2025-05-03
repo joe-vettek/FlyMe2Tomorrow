@@ -1,4 +1,4 @@
 rootProject.name = mod_name_s
-//includeBuild '1.21.1-neo'
+includeBuild '1.21.1-neo'
 includeBuild '1.20.1-forge'
 
