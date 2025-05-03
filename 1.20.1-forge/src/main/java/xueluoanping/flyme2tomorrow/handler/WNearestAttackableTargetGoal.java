@@ -72,7 +72,6 @@ public class WNearestAttackableTargetGoal<T> extends TargetGoal {
     }
 
     private boolean testIfTarget(LivingEntity livingEntity) {
-
         return !targetType.isInstance(livingEntity);
     }
 

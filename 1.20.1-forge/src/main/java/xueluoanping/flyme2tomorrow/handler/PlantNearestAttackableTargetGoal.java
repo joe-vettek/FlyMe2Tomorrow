@@ -5,6 +5,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.target.TargetGoal;
 import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.player.Player;
@@ -59,15 +60,21 @@ public class PlantNearestAttackableTargetGoal extends TargetGoal {
     }
 
     protected void findTarget() {
-        List<LivingEntity> entities = this.mob.level().getEntities(EntityTypeTest.forClass(LivingEntity.class), this.getTargetSearchArea(this.getFollowDistance()), (p_148152_) -> {
-            return true;
-        });
-        entities.removeIf(this::testIfTarget);
+        List<LivingEntity> entities = this.mob.level().getEntities(EntityTypeTest.forClass(LivingEntity.class), this.getTargetSearchArea(this.getFollowDistance()), (p_148152_) -> true);
+        entities.removeIf(this::removeTest);
         this.target = this.mob.level().getNearestEntity(entities, this.targetConditions, this.mob, this.mob.getX(), this.mob.getEyeY(), this.mob.getZ());
     }
 
+    private boolean removeTest(LivingEntity livingEntity) {
+        return !testIfTarget(livingEntity);
+    }
+
     private boolean testIfTarget(LivingEntity livingEntity) {
-        return livingEntity.getType().is(targetType);
+        return livingEntity.getType().is(targetType)
+
+                // || (this.mob).goalSelector.getAvailableGoals().stream().filter(s->s.getGoal() instanceof MeleeAttackGoal).findFirst()
+                // .map(c->c!=null)
+        ;
     }
 
 
